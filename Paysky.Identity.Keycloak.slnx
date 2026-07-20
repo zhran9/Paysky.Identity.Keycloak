@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Paysky.Identity.Keycloak.Abstractions/Paysky.Identity.Keycloak.Abstractions.csproj" />
+    <Project Path="src/Paysky.Identity.Keycloak.Admin/Paysky.Identity.Keycloak.Admin.csproj" />
+    <Project Path="src/Paysky.Identity.Keycloak.Authentication/Paysky.Identity.Keycloak.Authentication.csproj" />
+    <Project Path="src/Paysky.Identity.Keycloak.Authorization/Paysky.Identity.Keycloak.Authorization.csproj" />
+    <Project Path="src/Paysky.Identity.Keycloak.Login/Paysky.Identity.Keycloak.Login.csproj" />
+    <Project Path="src/Paysky.Identity.Keycloak/Paysky.Identity.Keycloak.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Paysky.Identity.Keycloak.UnitTests/Paysky.Identity.Keycloak.UnitTests.csproj" />
+  </Folder>
+</Solution>

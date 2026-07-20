@@ -1,0 +1,35 @@
+<Project>
+
+  <!--
+    Shared MSBuild properties for every project in the Paysky.Identity.Keycloak solution.
+    Per-project TargetFrameworks, PackageId, and package references stay in each .csproj.
+  -->
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <!-- CS1591: don't fail the build on a missing XML doc comment for a public member. -->
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+    <Deterministic>true</Deterministic>
+
+    <Company>PaySky</Company>
+    <Authors>PaySky Platform Engineering</Authors>
+    <Product>Paysky.Identity.Keycloak</Product>
+    <Version>1.0.0</Version>
+    <PackageTags>keycloak;identity;authentication;oidc;jwt;paysky</PackageTags>
+
+    <!-- Public package metadata -->
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)LICENSE" Pack="true" PackagePath="\" Visible="false" />
+    <None Include="$(MSBuildThisFileDirectory)README.md" Pack="true" PackagePath="\" Visible="false" />
+  </ItemGroup>
+
+</Project>

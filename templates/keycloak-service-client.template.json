@@ -1,0 +1,53 @@
+{
+  "_comment": "Standard PaySky Keycloak client template. Import via the Keycloak Admin console (Clients -> Import) or the Admin REST API. Replace every REPLACE_* placeholder. Confidential + service-account, direct-access-grants OFF by default (per the shared-library standard).",
+
+  "clientId": "REPLACE_service-client",
+  "name": "REPLACE Service Client",
+  "description": "Service client for REPLACE_service, provisioned from the Paysky.Identity.Keycloak standard template.",
+  "enabled": true,
+  "protocol": "openid-connect",
+
+  "publicClient": false,
+  "bearerOnly": false,
+  "serviceAccountsEnabled": true,
+  "standardFlowEnabled": true,
+  "implicitFlowEnabled": false,
+  "directAccessGrantsEnabled": false,
+  "authorizationServicesEnabled": false,
+
+  "redirectUris": [
+    "REPLACE_https://service.paysky.internal/*"
+  ],
+  "webOrigins": [
+    "REPLACE_https://service.paysky.internal"
+  ],
+
+  "attributes": {
+    "access.token.lifespan": "300",
+    "use.refresh.tokens": "true"
+  },
+
+  "defaultClientScopes": [
+    "web-origins",
+    "profile",
+    "roles",
+    "email"
+  ],
+
+  "protocolMappers": [
+    {
+      "name": "tenant-id",
+      "protocol": "openid-connect",
+      "protocolMapper": "oidc-usermodel-attribute-mapper",
+      "consentRequired": false,
+      "config": {
+        "user.attribute": "tenant_id",
+        "claim.name": "tenant_id",
+        "jsonType.label": "String",
+        "id.token.claim": "true",
+        "access.token.claim": "true",
+        "userinfo.token.claim": "true"
+      }
+    }
+  ]
+}

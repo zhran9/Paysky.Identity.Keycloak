@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net8.0;net10.0</TargetFrameworks>
+    <RootNamespace>Paysky.Identity.Keycloak</RootNamespace>
+    <PackageId>Paysky.Identity.Keycloak.Abstractions</PackageId>
+    <Description>Contracts, options, models, and result types for PaySky Keycloak integration. No ASP.NET Core dependency — safe to reference from background workers.</Description>
+  </PropertyGroup>
+
+</Project>

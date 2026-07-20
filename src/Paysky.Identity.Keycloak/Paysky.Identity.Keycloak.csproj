@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net8.0;net10.0</TargetFrameworks>
+    <RootNamespace>Paysky.Identity.Keycloak</RootNamespace>
+    <PackageId>Paysky.Identity.Keycloak</PackageId>
+    <Description>Meta-package for PaySky Keycloak integration. References Authentication, Authorization, Admin, and Login. Add this to get the full toolkit; reference an individual package for a narrower surface.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Paysky.Identity.Keycloak.Authentication\Paysky.Identity.Keycloak.Authentication.csproj" />
+    <ProjectReference Include="..\Paysky.Identity.Keycloak.Authorization\Paysky.Identity.Keycloak.Authorization.csproj" />
+    <ProjectReference Include="..\Paysky.Identity.Keycloak.Admin\Paysky.Identity.Keycloak.Admin.csproj" />
+    <ProjectReference Include="..\Paysky.Identity.Keycloak.Login\Paysky.Identity.Keycloak.Login.csproj" />
+  </ItemGroup>
+
+</Project>

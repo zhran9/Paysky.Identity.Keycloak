@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net8.0;net10.0</TargetFrameworks>
+    <RootNamespace>Paysky.Identity.Keycloak</RootNamespace>
+    <PackageId>Paysky.Identity.Keycloak.Login</PackageId>
+    <Description>User login/session broker for Keycloak (Resource Owner Password flow): login, refresh, logout, and userinfo. For services that authenticate users directly rather than redirecting to Keycloak. No ASP.NET Core dependency.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Paysky.Identity.Keycloak.Abstractions\Paysky.Identity.Keycloak.Abstractions.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
+    <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="8.0.0" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
+    <PackageReference Include="Microsoft.Extensions.Http" Version="10.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="10.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="10.0.0" />
+  </ItemGroup>
+
+</Project>

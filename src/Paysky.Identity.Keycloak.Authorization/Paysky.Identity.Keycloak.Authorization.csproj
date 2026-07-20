@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net8.0;net10.0</TargetFrameworks>
+    <RootNamespace>Paysky.Identity.Keycloak</RootNamespace>
+    <PackageId>Paysky.Identity.Keycloak.Authorization</PackageId>
+    <Description>Permission-based authorization for ASP.NET Core: a [Permission] attribute mapped to Keycloak roles, plus a JSON 403 result handler with a pluggable message resolver.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <ProjectReference Include="..\Paysky.Identity.Keycloak.Abstractions\Paysky.Identity.Keycloak.Abstractions.csproj" />
+  </ItemGroup>
+
+</Project>
