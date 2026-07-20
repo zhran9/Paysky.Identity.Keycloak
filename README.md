@@ -14,6 +14,7 @@ dotnet add package Paysky.Identity.Keycloak
 | Doc | Read it for |
 |---|---|
 | **This README** | Package overview, quick-start code samples |
+| [docs/API-REFERENCE.md](docs/API-REFERENCE.md) | Every public method across every package — full signatures |
 | [docs/GETTING-STARTED.md](docs/GETTING-STARTED.md) | Full step-by-step: onboarding a brand-new project |
 | [docs/CONFIGURATION.md](docs/CONFIGURATION.md) | Every config field, what it does, what's required |
 | [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md) | Real errors hit onboarding Super-POS, with exact fixes |
