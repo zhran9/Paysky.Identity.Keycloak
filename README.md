@@ -1,8 +1,23 @@
 # Paysky.Identity.Keycloak
 
-One internal library for Keycloak identity across the PaySky .NET estate. It replaces the two hand-rolled integrations (QRSwitch, APM) and is the standard onboarding path for new services (Super-POS first).
+One internal library for Keycloak identity across the PaySky .NET estate. It replaces the two hand-rolled integrations (QRSwitch, APM) and is the standard onboarding path for new services (Super-POS first). See [docs/DESIGN.md](docs/DESIGN.md) for why it exists and why it's built this way.
 
 **Build status (local, verified):** 6 packages × `net8.0` + `net10.0` = 12 assemblies, **0 warnings, 0 errors**. Unit tests: **27 passing**.
+
+**Install:**
+```powershell
+dotnet add package Paysky.Identity.Keycloak
+```
+
+## Documentation
+
+| Doc | Read it for |
+|---|---|
+| **This README** | Package overview, quick-start code samples |
+| [docs/GETTING-STARTED.md](docs/GETTING-STARTED.md) | Full step-by-step: onboarding a brand-new project |
+| [docs/CONFIGURATION.md](docs/CONFIGURATION.md) | Every config field, what it does, what's required |
+| [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md) | Real errors hit onboarding Super-POS, with exact fixes |
+| [docs/DESIGN.md](docs/DESIGN.md) | Why it's built this way — package split, security defaults, naming convention |
 
 ---
 
@@ -87,7 +102,7 @@ App-specific rules (e.g. QRSwitch's tenant-active check, `UPDATE_PASSWORD` handl
 
 ## Configuration
 
-Full canonical schema: [`templates/appsettings.Keycloak.sample.json`](templates/appsettings.Keycloak.sample.json). Minimal resource-server example:
+Full canonical schema: [`templates/appsettings.Keycloak.sample.json`](templates/appsettings.Keycloak.sample.json). Every field explained: [docs/CONFIGURATION.md](docs/CONFIGURATION.md). Minimal resource-server example:
 
 ```jsonc
 "Keycloak": {
@@ -117,6 +132,8 @@ A realm name always begins with the lowercase project slug; append an audience s
 
 Lowercase kebab-case only — realm names live in issuer URLs and the multi-realm selector matches on them.
 
+**Onboarding a brand-new project?** Full walkthrough: [docs/GETTING-STARTED.md](docs/GETTING-STARTED.md).
+
 ## Standard client template
 
 [`templates/keycloak-service-client.template.json`](templates/keycloak-service-client.template.json) — a confidential, service-account-enabled client with direct-access-grants off and a tenant-id protocol mapper. Replace the `REPLACE_*` placeholders and import via the Keycloak Admin console or REST API.
@@ -132,6 +149,8 @@ dotnet test  tests/Paysky.Identity.Keycloak.UnitTests
 
 Unit tests cover the behavioural core: role mapping (realm + client + malformed + de-dup), tenant normalization, audience/authority resolution, result factories, Keycloak error parsing, and admin-token caching + grant selection.
 
+Something not working? [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md) covers real errors hit onboarding Super-POS, with the actual cause and fix for each.
+
 ## Remaining phase (not yet done)
 
 **Integration tests against a live Keycloak (Testcontainers)** are the one planned item still outstanding — they need Docker and a running Keycloak, so they are a separate, environment-dependent phase from this compile-and-unit-verified core. Scope: provision a realm/client from the template, then exercise login → validate → admin CRUD → refresh → logout end-to-end.
@@ -144,4 +163,4 @@ Unit tests cover the behavioural core: role mapping (realm + client + malformed 
 2. **APM** — replace per-service validation, collapse the 3 duplicated `AuthExtensions`, swap the hand-built admin client. Renames realms to `apm-admin` / `apm-merchant` / `apm-tenant`.
 3. **QRSwitch** — collapse the two internal `KeycloakBaseService` implementations onto `IKeycloakTokenProvider`; tighten the audience check with a staged token re-issue so in-flight `aud=account` tokens are not locked out mid-deploy.
 
-See [`docs/keycloak-library-build-plan.md`](../docs/keycloak-library-build-plan.md) for the full design rationale and drift analysis.
+See [docs/DESIGN.md](docs/DESIGN.md) for the full rationale behind this order, and why QRSwitch's step specifically can't be a simple config swap.
